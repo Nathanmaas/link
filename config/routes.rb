@@ -1,23 +1,18 @@
 Rails.application.routes.draw do
 
+  root 'posts#index'
 
-  get 'users/new'
+  get 'signup' => 'users#new'
 
-  get 'post/new'
-
-  get 'sessions/new'
-
-  root'main#index'
-
-  get 'about' => 'main#about'
-
-  get 'secret' => 'main#secret'
+  post 'signup' => 'users#create'
 
   get 'login' => 'sessions#new'
 
+  get 'logout' => 'sessions#destroy'
+
   post 'login' => 'sessions#create'
 
-  get 'logout' => 'sessions#destroy'
+  resources :posts
 
 
 

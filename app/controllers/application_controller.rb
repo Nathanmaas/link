@@ -5,13 +5,20 @@ class ApplicationController < ActionController::Base
 
   before_action :current_user
 
-   def current_user
+  def current_user
     @current_user ||= User.find_by_id(session[:user_id])
-    end
+  end
+
   def is_authenticated?
-     unless @current_user
-      flash[:danger] = 'ACCESS DENIED'
+    unless @current_user
+      flash[:danger] = "ACCESS DENIED"
       redirect_to login_path
-      end
     end
+  end
+
+  def is_logged_in?
+    if @current_user
+      redirect_to root_path
+    end
+  end
 end

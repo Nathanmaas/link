@@ -1,2 +1,11 @@
-<h1>Post#new</h1>
-<p>Find me in app/views/post/new.html.erb</p>
+<%= render "shared/flash" %>
+
+<div>
+  <h3> Post A Link</h3>
+    <%= bootstrap_form_for @post do |f| %>
+    <%= f.text_field :title, placeholder: "Title" %>
+    <%= f.text_field :link, placeholder: "URL" %>
+    <%= f.primary %>
+  <% end %>
+</div>
+

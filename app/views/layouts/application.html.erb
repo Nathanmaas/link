@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Link</title>
+  <title>linkloader</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="//code.jquery.com/jquery.js"></script>
@@ -11,24 +11,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <h1>Link</h1>
-    <div class="pull-right">
+  <div id="title text-center">
+    <h1>link<em>L</em>oader</h1>
+  </div>
+  <div class="container">
+    <div class="row bg-info">
+    <div class="col-md-4">
+    <%= link_to "", root_path, class: "btn btn-primary glyphicon glyphicon-plus pull-right" %>
+    </div>
+    <div class="col-md-4 col-md-4 pull-right">
       <% if @current_user %>
-        You are logged in as
-        <%= @current_user.email %> |
+        Hello
+        <% current_user %>
+        Your email is
+        <%= current_user.email %> |
         <%= link_to "logout", logout_path %>
       <% else %>
         <%= link_to "login", login_path %>
-      <% end %>
+        <% end %>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-4 text-center">
+        <%= yield %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <%= yield %>
-  </div>
-</div>
-
 </body>
 </html>
 

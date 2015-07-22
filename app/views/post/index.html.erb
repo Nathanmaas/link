@@ -1,0 +1,7 @@
+<h1> Links <% link_to "", new_post_path, class: "btn btn-primary glyphicon glyphicon-sm" %></h1>
+  <% @posts.each do |post| %>
+  <%= link_to post.title, post.link %>
+  <% end %>
+
+  Join Our Community - Become a Member
+  <%= link_to signup_path %>

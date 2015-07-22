@@ -1,9 +1,10 @@
 class SessionsController < ApplicationController
-# login form
+
+  before_action :is_logged_in?, only: [:new, :create]
+
   def new
-  #   render plain: "new session"
   end
-# login action (create session)
+
   def create
      user = User.authenticate(params[:user][:email],
       params[:user][:password])
@@ -15,16 +16,12 @@ class SessionsController < ApplicationController
      else
       flash[:danger] = 'Invalid email or password.'
       redirect_to login_path
-
      end
-
   end
-# logout action invalidates session
+
   def destroy
      session[:user_id] = nil
      flash[:info] = 'You are logged out.'
      redirect_to login_path
-
   end
-
 end
